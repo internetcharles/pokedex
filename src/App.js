@@ -7,10 +7,11 @@ export default class App extends Component {
 
   state = {
     searchQuery: null,
+    displayOrder: 'asc',
     pokemonName: '',
     pokemonType: '',
     pokemonAttack: '',
-    pokemon: []
+    pokemon: [],
   }
 
 // checks if input data has been change and updates value
@@ -32,7 +33,7 @@ export default class App extends Component {
     return(
       <main>
         <input onChange={this.handleChange} name="searchQuery" />
-        <button onClick={this.handleClick}/>
+        <button onClick={this.handleClick} />
         <h1>{this.pokemonName}</h1>
         <QuoteList pokeList={this.state.pokemon} />
       </main>

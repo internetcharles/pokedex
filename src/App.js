@@ -6,36 +6,65 @@ import QuoteList from './QuoteList.js';
 export default class App extends Component {
 
   state = {
-    searchQuery: null,
     displayOrder: 'asc',
     pokemonName: '',
-    pokemonType: '',
-    pokemonAttack: '',
+    pokemonType: ['', 'normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'],
+    selectedPokemonType: '',
+    pokemonAttack: 1,
     pokemon: [],
+
   }
 
 // checks if input data has been change and updates value
-  handleChange = (e) => {
-    const value = e.target.value;
-    this.setState({ searchQuery: value });
+  handleNameChange = (e) => {
+    this.setState({ 
+      pokemonName: e.target.value 
+    });
+    console.log(this.state.pokemonName);
   }
 
+  handleTypeChange = (e) => {
+    this.setState({
+      selectedPokemonType: e.target.value
+    })
+  }
+
+  handleAttackChange = (e) => {
+    this.setState({
+        pokemonAttack: e.target.value
+    })
+  }
+
+
   handleClick = async () => {
-    const fetchedData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}`)
+    const attackValue = this.state.pokemonAttack;
+    const selectedName = this.state.pokemonName;
+    let selectedType = this.state.selectedPokemonType;
+    if(this.state.selectedPokemonType !== '') {
+      const fetchedData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${selectedName}&type=${selectedType}&attack=${attackValue}`)
+      this.setState ({ pokemon: fetchedData.body.results });
+    }
+      else{
+    const fetchedData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${selectedName}&attack=${attackValue}`)
     this.setState ({ pokemon: fetchedData.body.results });
-    console.log(fetchedData);
-    console.log(fetchedData.body);
-    
+    }
+
   }
 
 
   render() {
     return(
       <main>
-        <input onChange={this.handleChange} name="searchQuery" />
-        <button onClick={this.handleClick} />
-        <h1>{this.pokemonName}</h1>
-        <QuoteList pokeList={this.state.pokemon} />
+          <input value={this.state.pokemonName} onChange={this.handleNameChange}/>
+          <select value={this.state.selectedPokemonType} onChange={this.handleTypeChange}>
+            {
+              this.state.pokemonType.map(type =>
+                <option onChange={this.handleTypeChange} key={type.toString()} value={type}>{type}</option>)
+            }
+          </select>
+          <input value={this.state.pokemonAttack} onChange={this.handleAttackChange}></input>
+          <button className='search-button' onClick={this.handleClick}>SUBMIT</button>
+          <QuoteList pokeList={this.state.pokemon} />
       </main>
     )
 

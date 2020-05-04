@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Switch, BrowserRouter as Router, } from 'react-router-dom'
 import SearchPage from './SearchPage.js'
+import PokemonDetail from './PokemonDetail.js'
 import './App.css'
 
 export default class App extends Component {
@@ -15,6 +16,10 @@ export default class App extends Component {
                       render={(routerProps) => <SearchPage {...routerProps} />}
                       />
                   </Switch>
+                    <Route
+                    path ="/pokemon/:id"
+                    render={(routerProps) => <PokemonDetail {...routerProps} />}
+                    />
                 </Router>
               </div>
           </div>

@@ -9,7 +9,6 @@ const pokemonType = ['', 'normal', 'fire', 'water', 'electric', 'grass', 'ice', 
 export default class SearchPage extends Component {
 
   state = {
-    displayOrder: 'asc',
     pokemonName: '',
     selectedPokemonType: '',
     pokemonAttack: 1,

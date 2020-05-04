@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import './QuoteList.css'
 
 export default class QuoteList extends Component {
     render() {

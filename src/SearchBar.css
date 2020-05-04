@@ -1,0 +1,19 @@
+.search-bar {
+    height: 100%;
+    width: 30%;
+    font-size: 60%;
+    position: relative;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+input {
+    font-size: 70%;
+}
+
+select {
+    font-size: 70%;
+}
+
+button {
+    font-size: 70%;
+}

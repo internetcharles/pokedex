@@ -11,10 +11,15 @@
     background-color: antiquewhite;
     justify-content: center;
     list-style: none;
-    border: 1px blue;
-    border-style: dashed;
+    border: 1px gray;
+    border-style: dotted;
     height: 3fr;
     width: 3fr;
+}
+
+p {
+    font-size: 60%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 img {

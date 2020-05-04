@@ -15,10 +15,12 @@ export default class SearchPage extends Component {
     pokemon: [],
     page: 1,
     body: [],
-    searchQuery: ''
+    searchQuery: '',
+    link: 'https://alchemy-pokedex.herokuapp.com/api/pokedex',
   }
 
   componentDidMount = async () => {
+    // grabs content in URL
     const searchParams = new URLSearchParams(window.location.search);
     const query = searchParams.get('pokemon');
     this.setState ({searchQuery: query});
@@ -64,9 +66,8 @@ export default class SearchPage extends Component {
   }
 
 
-  handleClick = async () => {
+  handleClick = async (page) => {
     let link = 'https://alchemy-pokedex.herokuapp.com/api/pokedex?' 
-    let page = 1;
     const currentPage = '&page=' + page;
     const searchedPokemon = '&pokemon=' + this.state.pokemonName;
     const minAttack = '&attack=' + this.state.pokemonAttack;
@@ -100,7 +101,7 @@ export default class SearchPage extends Component {
   render() {
     return(
       <main>
-          <SearchBar handlePageClick={this.handlePageClick} handleClick={this.handleClick} handleOrderChange={this.handleOrderChange} handleTypeChange={this.handleTypeChange} handleNameChange={this.handleNameChange} handleAttackChange={this.handleAttackChange} pokemonType={this.state.pokemonType} pokemonName={this.state.pokemonName} pokemonAttack={this.state.pokemonAttack} pokemonType={pokemonType} />
+          <SearchBar handlePageClick={this.handlePageClick} handleClick={this.handleClick} handleOrderChange={this.handleOrderChange} handleTypeChange={this.handleTypeChange} handleNameChange={this.handleNameChange} handleAttackChange={this.handleAttackChange} pokemonType={this.state.pokemonType} pokemonName={this.state.pokemonName} pokemonAttack={this.state.pokemonAttack} pokemoneType={pokemonType}/>
           <QuoteList pokeList={this.state.pokemon} />
       </main>
     )

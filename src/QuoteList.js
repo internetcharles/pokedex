@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class QuoteList extends Component {
     render() {
@@ -6,7 +7,9 @@ export default class QuoteList extends Component {
             <div className='quotelist'>
                 <ul>{this.props.pokeList.map(pokemon => 
                     <li key={pokemon.id} className='list-item'>
-                        <h1 className='pokemon-name'>{pokemon.pokemon}</h1>
+                        <Link to={`/pokemon/${pokemon._id}`}>
+                            <h2>{pokemon.pokemon}</h2>
+                        </Link>
                         <img src={pokemon.url_image} alt={pokemon.pokemon}/>
                         <p>Type: {pokemon.type_1}/{pokemon.type_2}</p>
                         {/* <p>Ability: {pokemon.ability_1}</p>

@@ -16,6 +16,8 @@ export default class SearchBar extends Component {
                 MINIMUM ATTACK:
                 <input value={this.props.pokemonAttack} onChange={this.props.handleAttackChange}></input>
                 <button className='search-button' onClick={this.props.handleClick}>SUBMIT</button>
+                <button onClick={this.props.handlePageClick} value='next'>Next Page</button>
+                <button onClick={this.props.handlePageClick} value='prev'>Previous Page</button>
             </div>
         )
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import request from 'superagent';
 import './App.css';
 import QuoteList from './QuoteList.js';
+import SearchBar from './SearchBar.js';
 
 export default class App extends Component {
 
@@ -20,7 +21,6 @@ export default class App extends Component {
     this.setState({ 
       pokemonName: e.target.value 
     });
-    console.log(this.state.pokemonName);
   }
 
   handleTypeChange = (e) => {
@@ -55,15 +55,7 @@ export default class App extends Component {
   render() {
     return(
       <main>
-          <input value={this.state.pokemonName} onChange={this.handleNameChange}/>
-          <select value={this.state.selectedPokemonType} onChange={this.handleTypeChange}>
-            {
-              this.state.pokemonType.map(type =>
-                <option onChange={this.handleTypeChange} key={type.toString()} value={type}>{type}</option>)
-            }
-          </select>
-          <input value={this.state.pokemonAttack} onChange={this.handleAttackChange}></input>
-          <button className='search-button' onClick={this.handleClick}>SUBMIT</button>
+          <SearchBar handlePageClick={this.handlePageClick} handleClick={this.handleClick} handleOrderChange={this.handleOrderChange} handleTypeChange={this.handleTypeChange} handleNameChange={this.handleNameChange} handleAttackChange={this.handleAttackChange} pokemonType={this.state.pokemonType} pokemonName={this.state.pokemonName} pokemonAttack={this.state.pokemonAttack} displayOrder={this.state.displayOrder}/>
           <QuoteList pokeList={this.state.pokemon} />
       </main>
     )

@@ -1,0 +1,36 @@
+.quotelist {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.list-item {
+    display: flex;
+    background-color: antiquewhite;
+    justify-content: center;
+    list-style: none;
+    border: 1px gray;
+    border-style: dotted;
+    height: 3fr;
+    width: 3fr;
+}
+
+p {
+    font-size: 60%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+img {
+    height: 40%;
+    width: 30%;
+}
+
+h2 {
+    text-transform: capitalize;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 60%;
+    text-align: center;
+    justify-self: center;
+}
